@@ -1,0 +1,6 @@
+{
+  "name": "PTCA Class Link for TCM Elementary Department",
+  "description": "Administrative and Portal utility for TCM Elementary Department featuring Pupil Management, Grade Uploads, Attendance Scanning, Notifications and Interactive Announcements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
