@@ -37,8 +37,8 @@ export default function LoginGateway({
 }: LoginGatewayProps) {
   
   // Admin credentials state
-  const [adminUser, setAdminUser] = useState('admin');
-  const [adminPass, setAdminPass] = useState('admin123');
+  const [adminUser, setAdminUser] = useState('');
+  const [adminPass, setAdminPass] = useState('');
   const [adminError, setAdminError] = useState('');
 
   // Parent login state
@@ -94,7 +94,7 @@ export default function LoginGateway({
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
           PTCA Class Link Gateway
         </h1>
-        <p className="text-xs sm:text-sm text-slate-1000 mt-2 font-sans max-w-sm mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-2000 mt-2 font-sans max-w-sm mx-auto leading-relaxed">
           The collaborative communications and student tracker hub for the <span className="font-semibold text-slate-1000">TCM Elementary Department</span>.
         </p>
       </div>

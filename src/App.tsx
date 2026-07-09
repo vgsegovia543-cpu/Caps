@@ -200,45 +200,48 @@ export default function App() {
 
   return (
    
-    <div className="min-h-screen bg-green-800 flex flex-col font-sans" id="ptca-main-wrapper">
+    <div
+      className="min-h-screen flex flex-col font-sans"
+      id="ptca-main-wrapper"
+      style={{
+        backgroundImage: "url('/img/cmBG2.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {/* Professional Polish Design Theme Top Navigation Header */}
-      <nav className="sticky top-0 z-50
-          bg-white/80
-          backdrop-blur-lg
-          border-b border-white/20
-          shadow-lg
-          flex flex-col md:flex-row
-          items-center justify-between
-          px-6 py-3 md:h-16
-          gap-3 shrink-0">
+      <nav className="sticky top-0 z-50 mx-auto w-full max-w-7xl mt-3 rounded-2xl border border-white/40 bg-white/30 backdrop-blur-xl shadow-[0_10px_40px_rgba(15,23,42,0.16)] flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 py-3 md:h-16 gap-3 shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded flex items-center justify-center text-white font-bold font-display shadow-sm">
-            <img src="/img/CMlogoNBG.png" alt="CM Logo" />
-          </div>
+          <img
+            src="/img/CMlogoNBG.png"
+            alt="CM Logo"
+            className="h-13 w-13 object-contain"
+          />
           <div>
-            <h1 className="text-md sm:text-base font-bold tracking-tight text-slate-1500">
-              PTCA Class Link <span className="text-slate-1000 font-medium italic font-display">{activeRole === 'admin' ? 'Admin Portal' : 'Parents Portal'}</span>
+            <h1 className="text-base sm:text-lg font-bold tracking-tight text-slate-900">
+              PTCA Class Link <span className="ml-1 font-medium italic text-slate-900">{activeRole === 'admin' ? 'Admin Portal' : 'Parents Portal'}</span>
             </h1>
-            <p className="text-[10px] text-slate-1200 font-mono uppercase tracking-widest leading-none mt-0.5">TCM Elementary Department</p>
+            <p className="mt-0.5 text-[10px] font-mono uppercase tracking-[0.28em] text-slate-900/200">TCM Elementary Department</p>
           </div>
         </div>
-   
 
         {/* Dynamic Sandbox Selector & Control Viewpoint */}
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex items-center gap-1 rounded-xl border border-white/50 bg-white/70 p-1 shadow-sm">
             <button
               onClick={() => {
                 setActiveRole('admin');
                 addSystemLog("Simulator Viewpoint: Switched to Administrative Link");
               }}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition duration-150 flex items-center gap-1 ${
-                activeRole === 'admin' 
-                  ? 'bg-blue-700 text-white shadow-sm' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+              className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition duration-150 ${
+                activeRole === 'admin'
+                  ? 'bg-blue-700 text-white shadow-sm'
+                  : 'text-slate-700 hover:bg-slate-200/70 hover:text-slate-900'
               }`}
             >
-              <Settings className="w-3 h-3" />
+              <Settings className="h-3.5 w-3.5" />
               <span>Admin Link</span>
             </button>
 
@@ -247,36 +250,34 @@ export default function App() {
                 setActiveRole('user');
                 addSystemLog("Simulator Viewpoint: Switched to Parents & Students Link");
               }}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition duration-150 flex items-center gap-1 ${
-                activeRole === 'user' 
-                  ? 'bg-emerald-600 text-white shadow-sm' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+              className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition duration-150 ${
+                activeRole === 'user'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'text-slate-700 hover:bg-slate-200/70 hover:text-slate-900'
               }`}
             >
-              <User className="w-3 h-3" />
+              <User className="h-3.5 w-3.5" />
               <span>User Link</span>
             </button>
           </div>
 
-          <div className="h-5 w-px bg-slate-200 hidden sm:block"></div>
+          <div className="hidden h-5 w-px bg-slate-300/80 sm:block"></div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleResetSandboxData}
               title="Reset Sandbox Database"
-              className="px-2.5 py-1 text-xs font-semibold text-slate-600 bg-slate-50 hover:bg-slate-150 hover:text-red-650 border border-slate-200 rounded-lg flex items-center gap-1 transition duration-150"
+              className="flex items-center gap-1 rounded-lg border border-white/60 bg-white/70 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition duration-150 hover:bg-slate-100 hover:text-red-600"
             >
-              <RefreshCw className="w-3.5 h-3.5" />
+              <RefreshCw className="h-3.5 w-3.5" />
               <span>Reset Demo</span>
             </button>
-            
-            
           </div>
         </div>
       </nav>
 
       {/* Main Workspace Frame split with the SIMULATOR LOGS */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 grid grid-cols-1 gap-5 bg-[url('/img/cmBG2.png')] bg-cover bg-center bg-no-repeat" id="main-grid-layout">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 grid grid-cols-1 gap-5" id="main-grid-layout">
         
         {/* ACTIVE VIEWPORT (Admin Portal or User Portal) */}
         <section className="flex flex-col gap-4 items-center" id="view-portal-column">
@@ -356,19 +357,22 @@ export default function App() {
       </main>
 
       {/* Corporate Footing and school info */}
-      <footer className="border-t border-stone-300/80 py-4 " id="project-footer" style={{ backgroundColor: activeRole === 'admin' ? 'rgb(65, 109, 229)' : 'rgb(71, 184, 97)' }}>
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-stone-600 gap-2">
-          <p className="font-medium text-stone-800 flex flex-wrap items-center gap-2">
-            <span>© PTCA Class Link — TCM Elementary Department.</span>
-            <em className="text-stone-800">"Nisi Dominus Frustra"</em>
-            <span className="inline-flex items-center gap-1 text-stone-800">
-              <MapPin className="w-3.5 h-3.5" />
-              R. Kangleon Street, Maasin City, Southern Leyte, 6600
+      <footer
+        className="border-t border-white/30 py-4 px-4 md:px-6 backdrop-blur-2xl bg-white/25 shadow-[0_-10px_35px_rgba(15,23,42,0.12)]"
+        id="project-footer"
+        style={{ backgroundColor: activeRole === 'admin' ? 'rgba(65, 109, 229, 0.78)' : 'rgba(71, 184, 97, 0.78)' }}
+      >
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-slate-900 md:flex-row">
+          <p className="flex flex-wrap items-center justify-center gap-2 text-center font-medium md:justify-start md:text-left">
+            <span className="rounded-full bg-white/35 px-2.5 py-1 font-semibold shadow-sm">© PTCA Class Link — TCM Elementary Department.</span>
+            <span className="rounded-full bg-white/35 px-2.5 py-1 font-semibold shadow-sm">"Nisi Dominus Frustra"</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/30 px-2.5 py-1 text-slate-800/90 shadow-sm">
+              <MapPin className="h-3.5 w-3.5" />
+              R. Kangleon Street, Maasin City, Southern Leyte, 6600 
             </span>
           </p>
-          <div className="flex gap-4 font-mono text-stone-900 text-[11px]">
-            <span>School ID: 404718 </span>
-           
+          <div className="flex items-center gap-3 font-mono text-[11px] text-slate-900/90">
+            <span className="rounded-full border border-white/40 bg-white/40 px-2.5 py-1 shadow-sm">School ID: 404718</span>
           </div>
         </div>
       </footer>
