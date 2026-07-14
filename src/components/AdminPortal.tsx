@@ -495,7 +495,7 @@ export default function AdminPortal({
                   : 'text-600'
               }`}
             >
-              📝 Event List: Upload Grades
+              📝  Upload Grades and Awards
             </button>
             <button
               onClick={() => setActiveAdminTab('student-register')}
@@ -712,83 +712,6 @@ export default function AdminPortal({
                     <p className="text-xs text-stone-800">Provide term grades, examine registered students, and submit them directly to database.</p>
                   </div>
 
-                  <form onSubmit={handleAddAward} className="rounded-xl border border-amber-200 bg-amber-50/80 p-4 shadow-sm space-y-3">
-                    <div className="flex items-start gap-2">
-                      <div className="rounded-full bg-amber-100 p-2 text-amber-700">
-                        <Award className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-stone-800">Student Awards & Recognition</h4>
-                        <p className="text-xs text-stone-600">Add a PTCA award here and it will appear in the parent/student milestone report.</p>
-                      </div>
-                    </div>
-
-                    <div className="grid gap-3 md:grid-cols-2">
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-stone-700">Student</label>
-                        <select
-                          value={awardStudentId}
-                          onChange={(e) => {
-                            setAwardStudentId(e.target.value);
-                            setAwardSuccessMessage('');
-                          }}
-                          className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
-                        >
-                          {students.map((student) => (
-                            <option key={student.id} value={student.id}>
-                              {student.name} (ID: {student.id})
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-stone-700">Award</label>
-                        <select
-                          value={awardTitle}
-                          onChange={(e) => {
-                            setAwardTitle(e.target.value);
-                            setAwardSuccessMessage('');
-                          }}
-                          className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
-                        >
-                          {awardOptions.map((group) => (
-                            <optgroup key={group.label} label={group.label}>
-                              {group.options.map((option) => (
-                                <option key={option} value={option}>{option}</option>
-                              ))}
-                            </optgroup>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="mb-1 block text-xs font-semibold text-stone-700">Optional note</label>
-                      <textarea
-                        value={awardDescription}
-                        onChange={(e) => setAwardDescription(e.target.value)}
-                        rows={3}
-                        placeholder="Add a short description for the milestone report..."
-                        className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
-                      />
-                    </div>
-
-                    {awardSuccessMessage && (
-                      <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
-                        {awardSuccessMessage}
-                      </div>
-                    )}
-
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-900"
-                    >
-                      <Award className="w-4 h-4" />
-                      Save award to milestone report
-                    </button>
-                  </form>
-
                   {!gradeUploadSuccess ? (
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
                       {/* Left side: select pupil */}
@@ -929,10 +852,87 @@ export default function AdminPortal({
                             </button>
                           </div>
                         </form>
+
+                        <form onSubmit={handleAddAward} className="mt-4 rounded-xl border border-amber-200 bg-amber-50/80 p-4 shadow-sm space-y-3">
+                          <div className="flex items-start gap-2">
+                            <div className="rounded-full bg-amber-100 p-2 text-amber-700">
+                              <Award className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-semibold text-stone-800">Student Awards & Recognition</h4>
+                              <p className="text-xs text-stone-600">Add a PTCA award here and it will appear in the parent/student milestone report.</p>
+                            </div>
+                          </div>
+
+                          <div className="grid gap-3 md:grid-cols-2">
+                            <div>
+                              <label className="mb-1 block text-xs font-semibold text-stone-700">Student</label>
+                              <select
+                                value={awardStudentId}
+                                onChange={(e) => {
+                                  setAwardStudentId(e.target.value);
+                                  setAwardSuccessMessage('');
+                                }}
+                                className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
+                              >
+                                {students.map((student) => (
+                                  <option key={student.id} value={student.id}>
+                                    {student.name} (ID: {student.id})
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+
+                            <div>
+                              <label className="mb-1 block text-xs font-semibold text-stone-700">Award</label>
+                              <select
+                                value={awardTitle}
+                                onChange={(e) => {
+                                  setAwardTitle(e.target.value);
+                                  setAwardSuccessMessage('');
+                                }}
+                                className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
+                              >
+                                {awardOptions.map((group) => (
+                                  <optgroup key={group.label} label={group.label}>
+                                    {group.options.map((option) => (
+                                      <option key={option} value={option}>{option}</option>
+                                    ))}
+                                  </optgroup>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="mb-1 block text-xs font-semibold text-stone-700">Optional note</label>
+                            <textarea
+                              value={awardDescription}
+                              onChange={(e) => setAwardDescription(e.target.value)}
+                              rows={3}
+                              placeholder="Add a short description for the milestone report..."
+                              className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-700 outline-none focus:border-slate-500"
+                            />
+                          </div>
+
+                          {awardSuccessMessage && (
+                            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
+                              {awardSuccessMessage}
+                            </div>
+                          )}
+
+                          <button
+                            type="submit"
+                            className="inline-flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-900"
+                          >
+                            <Award className="w-4 h-4" />
+                            Save award to milestone report
+                          </button>
+                        </form>
                       </div>
                     </div>
                   ) : (
-                    <div className="max-w-md bg-emerald-50 border border-emerald-250 rounded-xl p-5 text-center space-y-3">
+                    <div className="max-w-md bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-center space-y-3">
                       <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 text-emerald-700">
                         <CheckCircle2 className="w-6 h-6" />
                       </div>

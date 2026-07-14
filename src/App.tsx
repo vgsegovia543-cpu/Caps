@@ -212,23 +212,23 @@ export default function App() {
       }}
     >
       {/* Professional Polish Design Theme Top Navigation Header */}
-      <nav className="sticky top-0 z-50 mx-auto w-full max-w-7xl mt-3 rounded-2xl border border-white/40 bg-white/30 backdrop-blur-xl shadow-[0_10px_40px_rgba(15,23,42,0.16)] flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 py-3 md:h-16 gap-3 shrink-0">
-        <div className="flex items-center gap-3">
+      <nav className="sticky top-0 z-50 mx-auto mt-3 w-[calc(100%-1rem)] max-w-7xl rounded-2xl border border-white/40 bg-white/30 backdrop-blur-xl shadow-[0_10px_40px_rgba(15,23,42,0.16)] flex flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8 xl:px-10 xl:max-w-[1400px] xl:py-4 shrink-0">
+        <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
           <img
             src="/img/CMlogoNBG.png"
             alt="CM Logo"
-            className="h-13 w-13 object-contain"
+            className="h-12 w-12 flex-shrink-0 object-contain sm:h-14 sm:w-14 lg:h-16 lg:w-16"
           />
-          <div>
-            <h1 className="text-base sm:text-lg font-bold tracking-tight text-slate-900">
-              PTCA Class Link <span className="ml-1 font-medium italic text-slate-900">{activeRole === 'admin' ? 'Admin Portal' : 'Parents Portal'}</span>
+          <div className="min-w-0">
+            <h1 className="text-sm sm:text-base lg:text-lg font-black tracking-[0.02em] text-slate-900 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]">
+              PTCA Class Link <span className="ml-1 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent italic">{activeRole === 'admin' ? 'Admin Portal' : 'Parents Portal'}</span>
             </h1>
-            <p className="mt-0.5 text-[10px] font-mono uppercase tracking-[0.28em] text-slate-900/200">TCM Elementary Department</p>
+            <p className="mt-1 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-slate-700/90">TCM Elementary Department</p>
           </div>
         </div>
 
         {/* Dynamic Sandbox Selector & Control Viewpoint */}
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-end">
           <div className="flex items-center gap-1 rounded-xl border border-white/50 bg-white/70 p-1 shadow-sm">
             <button
               onClick={() => {
@@ -364,7 +364,7 @@ export default function App() {
       >
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-slate-900 md:flex-row">
           <p className="flex flex-wrap items-center justify-center gap-2 text-center font-medium md:justify-start md:text-left">
-            <span className="rounded-full bg-white/35 px-2.5 py-1 font-semibold shadow-sm">© PTCA Class Link — TCM Elementary Department.</span>
+            <span className="rounded-full bg-white/35 px-2.5 py-1 font-semibold shadow-sm">© THE COLLEGE OF MAASIN Elementary Department.</span>
             <span className="rounded-full bg-white/35 px-2.5 py-1 font-semibold shadow-sm">"Nisi Dominus Frustra"</span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/30 px-2.5 py-1 text-slate-800/90 shadow-sm">
               <MapPin className="h-3.5 w-3.5" />
