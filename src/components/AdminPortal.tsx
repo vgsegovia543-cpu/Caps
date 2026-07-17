@@ -46,6 +46,7 @@ interface AdminPortalProps {
   addSystemLog: (text: string) => void;
   isAdminLogged: boolean;
   setIsAdminLogged: (val: boolean) => void;
+  onlineUserCount: number;
 }
 
 export default function AdminPortal({
@@ -61,7 +62,8 @@ export default function AdminPortal({
   onAddMilestone,
   addSystemLog,
   isAdminLogged,
-  setIsAdminLogged
+  setIsAdminLogged,
+  onlineUserCount
 }: AdminPortalProps) {
   // Authentication states
   const [loginError, setLoginError] = useState<string>('');
@@ -456,11 +458,17 @@ export default function AdminPortal({
           {/* Admin Header Panel */}
           <div className="bg-slate-800 border border-slate-700 rounded-xl p-5 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-md">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="px-2 py-0.5 bg-blue-900/80 text-blue-300 border border-blue-800/60 text-[10px] font-mono font-bold tracking-tight uppercase rounded">
                   PTCA system operator
                 </span>
                 <span className="text-slate-300 text-xs font-semibold">Administrative Hub</span>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <Users className="w-4 h-4 text-emerald-200" />
+                <span className="text-[11px] uppercase tracking-[0.18em] text-emerald-200 font-semibold">
+                  {onlineUserCount} Active Online User{onlineUserCount === 1 ? '' : 's'}
+                </span>
               </div>
               <h2 className="text-base sm:text-lg font-bold font-display mt-1 text-white flex items-center gap-2">
                 <span>PTCA Class Link Dashboard</span>
@@ -1439,7 +1447,7 @@ export default function AdminPortal({
                             (ann.replies || []).map(rep => (
                               <div key={rep.id} className="bg-stone-50 border p-3 rounded-lg text-xs">
                                 <div className="flex justify-between items-center text-[10px] text-stone-400 mb-0.5">
-                                  <span className="font-semibold text-stone-700">{rep.authorName}</span>
+                                  <span className="font-semibold text-stone-700">Anonymous Parent</span>
                                   <span>{new Date(rep.timestamp).toLocaleDateString()}</span>
                                 </div>
                                 <p className="text-[10px] text-stone-800 truncate mb-1.5">On: "{ann.title}"</p>

@@ -51,6 +51,7 @@ export default function App() {
   const [isAdminLogged, setIsAdminLogged] = useState<boolean>(false); // Starts false for clean entry page
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
   const [selectedUserStudent, setSelectedUserStudent] = useState<Student | null>(null);
+  const onlineUserCount = isUserLogged ? 1 : 0;
 
   // Load state on startup
   useEffect(() => {
@@ -313,6 +314,7 @@ export default function App() {
                 addSystemLog={addSystemLog}
                 isAdminLogged={isAdminLogged}
                 setIsAdminLogged={setIsAdminLogged}
+                onlineUserCount={onlineUserCount}
               />
             )
           ) : (
